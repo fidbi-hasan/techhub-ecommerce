@@ -2,9 +2,9 @@
 CREATE DATABASE IF NOT EXISTS techhub_ecommerce;
 USE techhub_ecommerce;
 
--- =========================
+-- ========================
 -- USERS TABLE
--- =========================
+-- ========================
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -15,17 +15,17 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- =========================
+-- ========================
 -- CATEGORIES TABLE
--- =========================
+-- ========================
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- =========================
+-- ========================
 -- PRODUCTS TABLE
--- =========================
+-- ========================
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     seller_id INT NOT NULL,
@@ -39,9 +39,9 @@ CREATE TABLE products (
     FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- =========================
+-- ========================
 -- PRODUCT ↔ CATEGORY (Many-to-Many)
--- =========================
+-- ========================
 CREATE TABLE product_categories (
     product_id INT NOT NULL,
     category_id INT NOT NULL,
@@ -50,9 +50,9 @@ CREATE TABLE product_categories (
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
--- =========================
+-- ========================
 -- ORDERS TABLE
--- =========================
+-- ========================
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
@@ -62,9 +62,9 @@ CREATE TABLE orders (
     FOREIGN KEY (customer_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- =========================
+-- ========================
 -- ORDER ITEMS TABLE
--- =========================
+-- ========================
 CREATE TABLE order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -77,9 +77,9 @@ CREATE TABLE order_items (
     FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- =========================
+-- ========================
 -- REVIEWS TABLE
--- =========================
+-- ========================
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL,
@@ -91,9 +91,9 @@ CREATE TABLE reviews (
     FOREIGN KEY (customer_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- =========================
+-- ========================
 -- WISHLIST TABLE
--- =========================
+-- ========================
 CREATE TABLE wishlist (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NULL,
