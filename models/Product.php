@@ -63,3 +63,16 @@ function updateProductStatus($product_id, $status) {
     return mysqli_stmt_execute($stmt);
 }
 
+function getProductByIdForCart($id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT * FROM products WHERE id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+}
+

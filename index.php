@@ -4,6 +4,7 @@ session_start();
 require_once 'controllers/authController.php';
 require_once 'controllers/auth_guard.php';
 require_once 'controllers/productController.php';
+require_once 'controllers/cartController.php';
 
 $action = $_GET['action'] ?? 'login';
 
@@ -56,6 +57,18 @@ switch ($action) {
         requireRole('admin');
         require 'views/admin/product_moderation.php';
         handleProductApproval();
+        break;
+
+    case 'add_to_cart':
+        addToCart();
+        break;
+
+    case 'cart':
+        require 'views/customer/cart.php';
+        break;
+
+    case 'remove_from_cart':
+        removeFromCart();
         break;
 
     default:
