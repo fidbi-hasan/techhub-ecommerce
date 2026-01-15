@@ -106,6 +106,10 @@ switch ($action) {
         require 'views/auth/reset_password.php';
         handleResetPassword();
         break;
+    
+    case 'wishlist':
+        require 'views/customer/wishlist.php';
+        break;
 
     default:
         require 'views/errors/404.php';

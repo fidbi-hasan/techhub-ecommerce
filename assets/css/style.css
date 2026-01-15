@@ -121,7 +121,14 @@ button.secondary {
     margin-left: 15px;
     color: #aaa;
     font-size: 13px;
+    cursor: pointer;
 }
+
+.nav-user:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 
 .logout {
     color: #ff6b6b !important;

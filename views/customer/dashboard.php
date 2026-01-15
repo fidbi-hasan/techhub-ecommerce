@@ -27,7 +27,7 @@ include 'views/common/header.php';
 
         <div class="card">
             <h3>Wishlist</h3>
-            <p>Saved items</p>
+            <a href="index.php?action=wishlist">View Wishlist</a>
         </div>
     </div>
 </div>

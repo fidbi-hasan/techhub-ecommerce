@@ -19,9 +19,22 @@
                     <a href="index.php?action=admin_products">Approve Products</a>
                 <?php endif; ?>
 
-                <span class="nav-user">
+                <?php
+                $dashboardLink = '#';
+
+                if ($_SESSION['role'] === 'customer') {
+                    $dashboardLink = 'index.php?action=customer_dashboard';
+                } elseif ($_SESSION['role'] === 'seller') {
+                    $dashboardLink = 'index.php?action=seller_dashboard';
+                } elseif ($_SESSION['role'] === 'admin') {
+                    $dashboardLink = 'index.php?action=admin_dashboard';
+                }
+                ?>
+
+                <a href="<?php echo $dashboardLink; ?>" class="nav-user">
                     <?php echo htmlspecialchars($_SESSION['name']); ?>
-                </span>
+                </a>
+                    
                 <a href="index.php?action=logout" class="logout">Logout</a>
 
             <?php else: ?>
