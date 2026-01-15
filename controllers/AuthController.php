@@ -64,3 +64,47 @@ function handleLogout() {
     header("Location: index.php?action=login");
     exit;
 }
+
+function handleForgotPassword() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = trim($_POST['email']);
+
+        if ($email === '') {
+            die("Email required");
+        }
+
+        $user = getUserByEmail($email);
+
+        if (!$user) {
+            die("Email not found");
+        }
+
+        // store email temporarily in session
+        $_SESSION['reset_email'] = $email;
+
+        header("Location: index.php?action=reset_password");
+        exit;
+    }
+}
+
+function handleResetPassword() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        if (!isset($_SESSION['reset_email'])) {
+            die("Invalid reset request");
+        }
+
+        $password = $_POST['password'];
+
+        if (strlen($password) < 6) {
+            die("Password must be at least 6 characters");
+        }
+
+        updatePasswordByEmail($_SESSION['reset_email'], $password);
+
+        unset($_SESSION['reset_email']);
+
+        header("Location: index.php?action=login");
+        exit;
+    }
+}

@@ -18,3 +18,18 @@ function createUser($name, $email, $password, $role) {
     mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $password, $role);
     return mysqli_stmt_execute($stmt);
 }
+
+function updatePasswordByEmail($email, $newPassword) {
+    global $conn;
+
+    $hashed = password_hash($newPassword, PASSWORD_DEFAULT);
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "UPDATE users SET password = ? WHERE email = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "ss", $hashed, $email);
+
+    return mysqli_stmt_execute($stmt);
+}
+

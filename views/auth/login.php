@@ -20,7 +20,7 @@
 
 <div class="auth-links">
     <a href="index.php?action=register">Register</a> |
-    <a href="index.php?action=reset_password">Forgot Password?</a>
+    <a href="index.php?action=forgot_password">Forgot Password?</a>
 </div>
 </div>
 

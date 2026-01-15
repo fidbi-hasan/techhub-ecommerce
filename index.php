@@ -96,7 +96,16 @@ switch ($action) {
     case 'seller_my_products':
         require 'views/seller/my_products.php';
         break;
+    
+    case 'forgot_password':
+        require 'views/auth/forgot_password.php';
+        handleForgotPassword();
+        break;
 
+    case 'reset_password':
+        require 'views/auth/reset_password.php';
+        handleResetPassword();
+        break;
 
     default:
         require 'views/errors/404.php';
