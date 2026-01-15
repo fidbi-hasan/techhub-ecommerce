@@ -1,5 +1,5 @@
 <?php
-require_once 'models/user_model.php';
+require_once 'models/User.php';
 
 function handleRegister() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

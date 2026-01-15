@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-require_once 'controllers/auth_controller.php';
+require_once 'controllers/authController.php';
 require_once 'controllers/auth_guard.php';
+require_once 'controllers/productController.php';
 
 $action = $_GET['action'] ?? 'login';
 
@@ -29,14 +30,25 @@ switch ($action) {
         break;
 
     case 'register':
-        require 'views/auth/register.php';
+        require 'views/auth/registration.php';
         handleRegister();
         break;
 
     case 'logout':
         handleLogout();
         break;
+    
+    case 'seller_products':
+        requireRole('seller');
+        require 'views/seller/manage_products.php';
+        handleAddProduct();
+        break;
 
     default:
         require 'views/errors/404.php';
 }
+
+
+
+
+
