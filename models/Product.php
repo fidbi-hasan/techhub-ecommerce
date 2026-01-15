@@ -48,7 +48,20 @@ function getProductById($id) {
 
 function getPendingProducts() {
     global $conn;
-    $query = "SELECT * FROM products WHERE status = 'pending'";
+
+    $query = "
+        SELECT 
+            p.id,
+            p.name,
+            p.price,
+            p.image,
+            u.name AS seller_name
+        FROM products p
+        JOIN users u ON p.seller_id = u.id
+        WHERE p.status = 'pending'
+        ORDER BY p.created_at DESC
+    ";
+
     return mysqli_query($conn, $query);
 }
 
