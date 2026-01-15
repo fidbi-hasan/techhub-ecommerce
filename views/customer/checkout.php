@@ -14,3 +14,5 @@ requireRole('customer');
     <button type="submit">Place Order</button>
 </form>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

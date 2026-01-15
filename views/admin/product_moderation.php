@@ -56,3 +56,5 @@ $products = getPendingProducts();
 
     <?php endif; ?>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

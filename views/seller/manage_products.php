@@ -26,3 +26,5 @@ include 'views/common/header.php';
         <button type="submit">Add Product</button>
     </form>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

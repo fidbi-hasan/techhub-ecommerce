@@ -32,5 +32,7 @@
 <p>Already have an account? <a href="index.php?action=login">Login</a></p>
 </div>
 </div>
+
+<?php include 'views/common/footer.php'; ?>
 </body>
 </html>

@@ -26,5 +26,7 @@
 </div>
 </div>
 
+<?php include 'views/common/footer.php'; ?>
+
 </body>
 </html>

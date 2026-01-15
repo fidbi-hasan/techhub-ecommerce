@@ -48,3 +48,5 @@ $items = getWishlistItems($_SESSION['user_id']);
 
     <?php endif; ?>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

@@ -44,3 +44,5 @@ if (!$product) {
     <p><a href="index.php?action=login">Login to add to cart</a></p>
 <?php endif; ?>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

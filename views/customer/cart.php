@@ -60,3 +60,5 @@ $total = 0;
 
 <?php endif; ?>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

@@ -10,3 +10,5 @@
         <button type="submit">Reset Password</button>
     </form>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

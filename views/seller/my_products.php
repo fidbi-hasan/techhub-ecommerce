@@ -30,3 +30,5 @@ $products = getProductsBySeller($seller_id);
         </table>
     <?php endif; ?>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

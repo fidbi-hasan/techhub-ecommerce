@@ -26,3 +26,5 @@ include 'views/common/header.php';
         </div>
     </div>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

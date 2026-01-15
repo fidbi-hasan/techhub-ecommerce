@@ -14,3 +14,5 @@
         <a href="index.php?action=login">Back to Login</a>
     </div>
 </div>
+
+<?php include 'views/common/footer.php'; ?>

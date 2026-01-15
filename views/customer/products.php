@@ -28,3 +28,5 @@ $products = getApprovedProducts();
     </div>
 </div>
 
+<?php include 'views/common/footer.php'; ?>
+
