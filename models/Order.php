@@ -80,3 +80,30 @@ function updateOrderItemStatus($order_item_id, $status) {
     return mysqli_stmt_execute($stmt);
 }
 
+function getCustomerOrderItems($customer_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT 
+            o.id AS order_id,
+            o.status,
+            o.created_at,
+            p.name AS product_name,
+            p.image,
+            oi.quantity,
+            oi.price
+         FROM orders o
+         JOIN order_items oi ON o.id = oi.order_id
+         JOIN products p ON oi.product_id = p.id
+         WHERE o.customer_id = ?
+         ORDER BY o.created_at DESC"
+    );
+
+    mysqli_stmt_bind_param($stmt, "i", $customer_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+
+
