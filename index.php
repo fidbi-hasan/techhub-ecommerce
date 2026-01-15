@@ -84,6 +84,12 @@ switch ($action) {
         require 'views/customer/orders.php';
         break;
 
+    case 'seller_orders':
+        require 'views/seller/orders.php';
+        handleSellerOrderStatus();
+        break;
+
+
     default:
         require 'views/errors/404.php';
 }

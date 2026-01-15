@@ -28,6 +28,14 @@ if (!$product) {
     <form method="POST" action="index.php?action=add_to_cart">
         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
         <button type="submit">Add to Cart</button>
+        <button type="button" onclick="addToWishlist(<?php echo $product['id']; ?>)">
+            Add to Wishlist
+        </button>
+
+
+        <p id="wishlist_msg"></p>
+
+        <script src="assets/js/wishlist.js"></script>
     </form>
 <?php else: ?>
     <p><a href="index.php?action=login">Login to add to cart</a></p>

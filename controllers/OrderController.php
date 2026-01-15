@@ -41,3 +41,24 @@ function placeOrder() {
     header("Location: index.php?action=orders");
     exit;
 }
+
+function handleSellerOrderStatus() {
+
+    require_once 'controllers/auth_guard.php';
+    requireRole('seller');
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $order_id = $_POST['order_id'];
+        $status   = $_POST['status'];
+
+        if (!in_array($status, ['processing', 'shipped'])) {
+            die("Invalid status");
+        }
+
+        updateOrderStatus($order_id, $status);
+
+        header("Location: index.php?action=seller_orders");
+        exit;
+    }
+}

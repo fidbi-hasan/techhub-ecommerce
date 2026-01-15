@@ -41,3 +41,40 @@ function getCustomerOrders($customer_id) {
 
     return mysqli_stmt_get_result($stmt);
 }
+
+function getSellerOrders($seller_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT 
+            oi.id AS order_item_id,
+            o.id AS order_id,
+            o.status,
+            o.created_at,
+            p.name AS product_name,
+            oi.quantity
+         FROM order_items oi
+         JOIN orders o ON oi.order_id = o.id
+         JOIN products p ON oi.product_id = p.id
+         WHERE oi.seller_id = ?
+         ORDER BY o.created_at DESC"
+    );
+
+    mysqli_stmt_bind_param($stmt, "i", $seller_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+
+function updateOrderStatus($order_id, $status) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "UPDATE orders SET status = ? WHERE id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "si", $status, $order_id);
+
+    return mysqli_stmt_execute($stmt);
+}
