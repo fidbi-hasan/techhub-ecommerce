@@ -46,3 +46,20 @@ function getProductById($id) {
     return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 }
 
+function getPendingProducts() {
+    global $conn;
+    $query = "SELECT * FROM products WHERE status = 'pending'";
+    return mysqli_query($conn, $query);
+}
+
+function updateProductStatus($product_id, $status) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "UPDATE products SET status = ? WHERE id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "si", $status, $product_id);
+    return mysqli_stmt_execute($stmt);
+}
+

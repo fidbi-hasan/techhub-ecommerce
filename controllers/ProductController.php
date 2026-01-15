@@ -40,3 +40,21 @@ function showProductDetails($id) {
     return getProductById($id);
 }
 
+function handleProductApproval() {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $product_id = $_POST['product_id'];
+        $status     = $_POST['status']; // approved or rejected
+
+        if ($status !== 'approved' && $status !== 'rejected') {
+            die("Invalid status");
+        }
+
+        updateProductStatus($product_id, $status);
+
+        header("Location: index.php?action=admin_products");
+        exit;
+    }
+}
+

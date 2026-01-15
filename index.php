@@ -52,6 +52,12 @@ switch ($action) {
         require 'views/customer/product_details.php';
         break;
 
+    case 'admin_products':
+        requireRole('admin');
+        require 'views/admin/product_moderation.php';
+        handleProductApproval();
+        break;
+
     default:
         require 'views/errors/404.php';
 }
