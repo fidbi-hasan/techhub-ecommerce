@@ -31,3 +31,8 @@ function handleAddProduct() {
         exit;
     }
 }
+
+function showProducts() {
+    return getApprovedProducts();
+}
+

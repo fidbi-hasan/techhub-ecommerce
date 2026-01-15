@@ -43,6 +43,10 @@ switch ($action) {
         require 'views/seller/manage_products.php';
         handleAddProduct();
         break;
+    
+    case 'products':
+        require 'views/customer/products.php';
+        break;
 
     default:
         require 'views/errors/404.php';

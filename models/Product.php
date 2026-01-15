@@ -23,3 +23,13 @@ function addProduct($seller_id, $name, $description, $price, $stock, $image) {
 
     return mysqli_stmt_execute($stmt);
 }
+
+function getApprovedProducts() {
+    global $conn;
+
+    $query = "SELECT * FROM products WHERE status = 'approved' ORDER BY created_at DESC";
+    $result = mysqli_query($conn, $query);
+
+    return $result;
+}
+
