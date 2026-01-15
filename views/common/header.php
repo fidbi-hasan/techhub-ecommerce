@@ -2,7 +2,9 @@
 
 <div style="background:#222; padding:12px;">
     <div class="container" style="background:none; color:#fff;">
-        <strong>TechHub</strong>
+        <a href="index.php?action=home" style="color:#fff; font-weight:bold;">
+            TechHub
+        </a>
 
         <span style="float:right;">
             <a href="index.php?action=products" style="color:#fff; margin-right:15px;">Products</a>

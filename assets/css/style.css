@@ -59,3 +59,28 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+button, .btn {
+    background: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 14px;
+}
+
+button.danger {
+    background: #dc3545;
+}
+
+button.secondary {
+    background: #6c757d;
+}
+
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+
+.alert {
+    padding: 10px;
+    background: #e9f5ff;
+    border-left: 4px solid #007bff;
+    margin-bottom: 15px;
+}

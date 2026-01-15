@@ -76,3 +76,16 @@ function getProductByIdForCart($id) {
     return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 }
 
+function getProductsBySeller($seller_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT * FROM products WHERE seller_id = ? ORDER BY created_at DESC"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $seller_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+

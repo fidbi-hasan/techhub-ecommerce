@@ -1,28 +1,28 @@
 <?php
 require_once 'controllers/auth_guard.php';
 requireRole('seller');
+include 'views/common/header.php';
 ?>
 
-<?php include 'views/common/header.php'; ?>
-<link rel="stylesheet" href="assets/css/dashboard.css">
-
 <div class="container">
-    <h2>Seller Dashboard</h2>
+    <h2>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></h2>
+    <p>Seller Dashboard</p>
+    <hr>
 
     <div class="dashboard">
         <div class="card">
+            <h3>Add Product</h3>
+            <a href="index.php?action=seller_products">Add New Product</a>
+        </div>
+
+        <div class="card">
             <h3>My Products</h3>
-            <p>Manage</p>
+            <a href="index.php?action=seller_my_products">Manage Products</a>
         </div>
 
         <div class="card">
             <h3>Orders</h3>
-            <p>Track</p>
-        </div>
-
-        <div class="card">
-            <h3>Sales Status</h3>
-            <p>Active</p>
+            <a href="index.php?action=seller_orders">View Orders</a>
         </div>
     </div>
 </div>

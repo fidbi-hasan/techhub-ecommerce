@@ -7,7 +7,7 @@ require_once 'controllers/productController.php';
 require_once 'controllers/cartController.php';
 require_once 'controllers/orderController.php';
 
-$action = $_GET['action'] ?? 'login';
+$action = $_GET['action'] ?? 'home';
 
 switch ($action) {
 
@@ -87,6 +87,14 @@ switch ($action) {
     case 'seller_orders':
         require 'views/seller/orders.php';
         handleSellerOrderStatus();
+        break;
+
+    case 'home':
+        require 'views/common/home.php';
+        break;
+
+    case 'seller_my_products':
+        require 'views/seller/my_products.php';
         break;
 
 
