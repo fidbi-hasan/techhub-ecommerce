@@ -5,6 +5,7 @@ require_once 'controllers/authController.php';
 require_once 'controllers/auth_guard.php';
 require_once 'controllers/productController.php';
 require_once 'controllers/cartController.php';
+require_once 'controllers/orderController.php';
 
 $action = $_GET['action'] ?? 'login';
 
@@ -69,6 +70,18 @@ switch ($action) {
 
     case 'remove_from_cart':
         removeFromCart();
+        break;
+
+    case 'checkout':
+        require 'views/customer/checkout.php';
+        break;
+
+    case 'place_order':
+        placeOrder();
+        break;
+
+    case 'orders':
+        require 'views/customer/orders.php';
         break;
 
     default:
