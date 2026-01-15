@@ -49,8 +49,8 @@ function getSellerOrders($seller_id) {
         $conn,
         "SELECT 
             oi.id AS order_item_id,
+            oi.status,
             o.id AS order_id,
-            o.status,
             o.created_at,
             p.name AS product_name,
             oi.quantity
@@ -67,14 +67,16 @@ function getSellerOrders($seller_id) {
     return mysqli_stmt_get_result($stmt);
 }
 
-function updateOrderStatus($order_id, $status) {
+
+function updateOrderItemStatus($order_item_id, $status) {
     global $conn;
 
     $stmt = mysqli_prepare(
         $conn,
-        "UPDATE orders SET status = ? WHERE id = ?"
+        "UPDATE order_items SET status = ? WHERE id = ?"
     );
-    mysqli_stmt_bind_param($stmt, "si", $status, $order_id);
+    mysqli_stmt_bind_param($stmt, "si", $status, $order_item_id);
 
     return mysqli_stmt_execute($stmt);
 }
+

@@ -4,6 +4,9 @@ require_once 'models/Product.php';
 
 $products = getApprovedProducts();
 ?>
+<?php include 'views/common/header.php'; ?>
+<div class="container">
+
 
 <h2>Products</h2>
 
@@ -39,3 +42,5 @@ $products = getApprovedProducts();
 </table>
 
 <?php endif; ?>
+</div>
+

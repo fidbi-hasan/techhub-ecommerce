@@ -8,6 +8,9 @@ $cart = $_SESSION['cart'] ?? [];
 $total = 0;
 ?>
 
+<?php include 'views/common/header.php'; ?>
+<div class="container">
+
 <h2>Your Cart</h2>
 
 <?php if (empty($cart)): ?>
@@ -56,3 +59,4 @@ $total = 0;
 <a href="index.php?action=checkout">Proceed to Checkout</a>
 
 <?php endif; ?>
+</div>

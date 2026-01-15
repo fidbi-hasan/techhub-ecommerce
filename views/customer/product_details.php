@@ -12,6 +12,9 @@ if (!$product) {
 }
 ?>
 
+<?php include 'views/common/header.php'; ?>
+<div class="container">
+
 <h2><?php echo htmlspecialchars($product['name']); ?></h2>
 
 <?php if ($product['image']): ?>
@@ -40,3 +43,4 @@ if (!$product) {
 <?php else: ?>
     <p><a href="index.php?action=login">Login to add to cart</a></p>
 <?php endif; ?>
+</div>

@@ -49,16 +49,17 @@ function handleSellerOrderStatus() {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $order_id = $_POST['order_id'];
-        $status   = $_POST['status'];
+        $order_item_id = $_POST['order_item_id'];
+        $status        = $_POST['status'];
 
         if (!in_array($status, ['processing', 'shipped'])) {
             die("Invalid status");
         }
 
-        updateOrderStatus($order_id, $status);
+        updateOrderItemStatus($order_item_id, $status);
 
         header("Location: index.php?action=seller_orders");
         exit;
     }
 }
+

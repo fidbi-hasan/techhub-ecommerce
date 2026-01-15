@@ -4,6 +4,7 @@ requireRole('seller');
 
 require_once 'models/Order.php';
 
+
 $orders = getSellerOrders($_SESSION['user_id']);
 ?>
 
@@ -33,7 +34,7 @@ $orders = getSellerOrders($_SESSION['user_id']);
             <td>
                 <?php if ($row['status'] !== 'delivered'): ?>
                     <form method="POST" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?php echo $row['order_id']; ?>">
+                        <input type="hidden" name="order_item_id" value="<?php echo $row['order_item_id']; ?>">
                         <select name="status">
                             <option value="processing">Processing</option>
                             <option value="shipped">Shipped</option>

@@ -3,9 +3,11 @@
 <head>
     <title>Login</title>
     <script src="assets/js/auth_validation.js"></script>
+    <link rel="stylesheet" href="assets/css/auth.css">
 </head>
 <body>
 
+<div class="auth-box">
 <h2>Login</h2>
 
 <form method="POST" onsubmit="return validateLogin();">
@@ -16,10 +18,11 @@
     <button type="submit">Login</button>
 </form>
 
-<p>
+<div class="auth-links">
     <a href="index.php?action=register">Register</a> |
     <a href="index.php?action=reset_password">Forgot Password?</a>
-</p>
+</div>
+</div>
 
 </body>
 </html>
