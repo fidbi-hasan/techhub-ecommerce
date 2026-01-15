@@ -1,3 +1,5 @@
+<?php include 'views/common/header.php'; ?>
+
 <link rel="stylesheet" href="assets/css/auth.css">
 
 <div class="auth-box">

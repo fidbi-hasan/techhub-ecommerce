@@ -1,19 +1,33 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
-<div style="background:#222; padding:12px;">
-    <div class="container" style="background:none; color:#fff;">
-        <a href="index.php?action=home" style="color:#fff; font-weight:bold;">
-            TechHub
-        </a>
+<header class="navbar">
+    <div class="nav-container">
+        <a href="index.php?action=home" class="logo">TechHub</a>
 
-        <span style="float:right;">
-            <a href="index.php?action=products" style="color:#fff; margin-right:15px;">Products</a>
+        <nav>
+            <a href="index.php?action=products">Products</a>
 
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="index.php?action=logout" style="color:#fff;">Logout</a>
+
+                <?php if ($_SESSION['role'] === 'customer'): ?>
+                    <a href="index.php?action=orders">My Orders</a>
+                    <a href="index.php?action=cart">Cart</a>
+                <?php elseif ($_SESSION['role'] === 'seller'): ?>
+                    <a href="index.php?action=seller_products">Add Product</a>
+                    <a href="index.php?action=seller_orders">Orders</a>
+                <?php elseif ($_SESSION['role'] === 'admin'): ?>
+                    <a href="index.php?action=admin_products">Approve Products</a>
+                <?php endif; ?>
+
+                <span class="nav-user">
+                    <?php echo htmlspecialchars($_SESSION['name']); ?>
+                </span>
+                <a href="index.php?action=logout" class="logout">Logout</a>
+
             <?php else: ?>
-                <a href="index.php?action=login" style="color:#fff;">Login</a>
+                <a href="index.php?action=login">Login</a>
+                <a href="index.php?action=register">Register</a>
             <?php endif; ?>
-        </span>
+        </nav>
     </div>
-</div>
+</header>

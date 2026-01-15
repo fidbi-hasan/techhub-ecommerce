@@ -1,3 +1,5 @@
+<?php include 'views/common/header.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>

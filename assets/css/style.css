@@ -84,3 +84,45 @@ button.secondary {
     border-left: 4px solid #007bff;
     margin-bottom: 15px;
 }
+
+/* Navbar */
+.navbar {
+    background: #222;
+    padding: 10px 0;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-container nav a {
+    color: #ddd;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.nav-container nav a:hover {
+    color: #fff;
+}
+
+.nav-user {
+    margin-left: 15px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+.logout {
+    color: #ff6b6b !important;
+}
