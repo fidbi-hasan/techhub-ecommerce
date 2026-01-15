@@ -53,6 +53,7 @@ function getSellerOrders($seller_id) {
             o.id AS order_id,
             o.created_at,
             p.name AS product_name,
+            p.image,
             oi.quantity
          FROM order_items oi
          JOIN orders o ON oi.order_id = o.id
