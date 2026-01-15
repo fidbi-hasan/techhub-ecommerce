@@ -36,3 +36,7 @@ function showProducts() {
     return getApprovedProducts();
 }
 
+function showProductDetails($id) {
+    return getProductById($id);
+}
+

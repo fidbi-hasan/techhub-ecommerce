@@ -47,6 +47,10 @@ switch ($action) {
     case 'products':
         require 'views/customer/products.php';
         break;
+    
+    case 'product_details':
+        require 'views/customer/product_details.php';
+        break;
 
     default:
         require 'views/errors/404.php';
