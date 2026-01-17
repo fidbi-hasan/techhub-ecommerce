@@ -6,6 +6,7 @@ require_once 'controllers/auth_guard.php';
 require_once 'controllers/productController.php';
 require_once 'controllers/cartController.php';
 require_once 'controllers/orderController.php';
+require_once 'controllers/ProfileController.php';
 
 $action = $_GET['action'] ?? 'home';
 
@@ -109,6 +110,11 @@ switch ($action) {
     
     case 'wishlist':
         require 'views/customer/wishlist.php';
+        break;
+
+    case 'profile':
+        require 'views/common/profile.php';
+        handleProfileUpdate();
         break;
 
     default:

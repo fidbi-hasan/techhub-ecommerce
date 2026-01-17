@@ -15,6 +15,11 @@ $orderCount = getSellerOrderItemCount($_SESSION['user_id']);
 <div class="container">
 
     <div class="dashboard-header">
+    <?php if (!empty($_SESSION['profile_image'])): ?>
+        <img src="uploads/profiles/<?php echo $_SESSION['profile_image']; ?>"
+            width="80" height="80" style="border-radius:50% height: 80px;margin-bottom:10px;">
+    <?php endif; ?>
+
         <h2>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></h2>
         <p>Seller Dashboard</p>
     </div>

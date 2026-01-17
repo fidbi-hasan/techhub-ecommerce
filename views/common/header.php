@@ -32,8 +32,14 @@
                 ?>
 
                 <a href="<?php echo $dashboardLink; ?>" class="nav-user">
+                    <?php if (!empty($_SESSION['profile_image'])): ?>
+                        <img src="uploads/profiles/<?php echo $_SESSION['profile_image']; ?>"
+                            style="width:28px;height:28px;border-radius:50%;vertical-align:middle;">
+                    <?php endif; ?>
                     <?php echo htmlspecialchars($_SESSION['name']); ?>
                 </a>
+
+                <a href="index.php?action=profile">Profile</a>
                     
                 <a href="index.php?action=logout" class="logout">Logout</a>
 
