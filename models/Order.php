@@ -189,4 +189,38 @@ function getRecentPendingProducts($limit = 3) {
     return mysqli_stmt_get_result($stmt);
 }
 
+function updateOrderStatusFromItems($order_id) {
+    global $conn;
+
+    $query = "
+        SELECT 
+            SUM(status = 'pending') AS pending_count,
+            SUM(status = 'processing') AS processing_count,
+            SUM(status = 'shipped') AS shipped_count,
+            COUNT(*) AS total
+        FROM order_items
+        WHERE order_id = ?
+    ";
+
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $order_id);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+    if ($result['shipped_count'] == $result['total']) {
+        $newStatus = 'shipped';
+    } elseif ($result['processing_count'] > 0) {
+        $newStatus = 'processing';
+    } else {
+        $newStatus = 'pending';
+    }
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "UPDATE orders SET status = ? WHERE id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "si", $newStatus, $order_id);
+    mysqli_stmt_execute($stmt);
+}
 

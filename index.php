@@ -86,8 +86,9 @@ switch ($action) {
         break;
 
     case 'seller_orders':
+        require_once 'controllers/OrderController.php';
+        handleSellerOrderStatus();   
         require 'views/seller/orders.php';
-        handleSellerOrderStatus();
         break;
 
     case 'home':
