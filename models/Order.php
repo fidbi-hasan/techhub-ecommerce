@@ -133,4 +133,60 @@ function getSellerOrderItemCount($seller_id) {
     return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['total'];
 }
 
+function getRecentCustomerOrders($customer_id, $limit = 3) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT id, status, created_at
+         FROM orders
+         WHERE customer_id = ?
+         ORDER BY created_at DESC
+         LIMIT ?"
+    );
+    mysqli_stmt_bind_param($stmt, "ii", $customer_id, $limit);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+
+function getRecentSellerOrderItems($seller_id, $limit = 3) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT 
+            p.name AS product_name,
+            oi.quantity,
+            oi.status
+         FROM order_items oi
+         JOIN products p ON oi.product_id = p.id
+         WHERE oi.seller_id = ?
+         ORDER BY oi.id DESC
+         LIMIT ?"
+    );
+    mysqli_stmt_bind_param($stmt, "ii", $seller_id, $limit);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+
+function getRecentPendingProducts($limit = 3) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT p.name, u.name AS seller_name
+         FROM products p
+         JOIN users u ON p.seller_id = u.id
+         WHERE p.status = 'pending'
+         ORDER BY p.created_at DESC
+         LIMIT ?"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $limit);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+
 

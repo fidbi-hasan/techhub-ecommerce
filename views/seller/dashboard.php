@@ -54,6 +54,28 @@ $orderCount = getSellerOrderItemCount($_SESSION['user_id']);
         </div>
     </div>
 
+    <?php
+        $recentOrders = getRecentSellerOrderItems($_SESSION['user_id']);
+    ?>
+
+    <h3 style="margin-top:40px;">Recent Orders</h3>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Status</th>
+        </tr>
+
+        <?php while ($row = mysqli_fetch_assoc($recentOrders)): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($row['product_name']); ?></td>
+                <td><?php echo $row['quantity']; ?></td>
+                <td><?php echo ucfirst($row['status']); ?></td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+
 </div>
 
 <?php include 'views/common/footer.php'; ?>

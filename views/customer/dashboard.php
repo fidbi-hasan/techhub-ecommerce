@@ -67,6 +67,28 @@ $wishlistCount = getWishlistCount($_SESSION['user_id']);
         </div>
     </div>
 
+    <?php
+        $recentOrders = getRecentCustomerOrders($_SESSION['user_id']);
+    ?>
+
+    <h3 style="margin-top:40px;">Recent Orders</h3>
+
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+
+        <?php while ($row = mysqli_fetch_assoc($recentOrders)): ?>
+            <tr>
+                <td>#<?php echo $row['id']; ?></td>
+                <td><?php echo ucfirst($row['status']); ?></td>
+                <td><?php echo $row['created_at']; ?></td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+
 </div>
 
 <?php include 'views/common/footer.php'; ?>

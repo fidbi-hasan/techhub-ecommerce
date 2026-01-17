@@ -44,6 +44,26 @@ $pendingCount = getPendingProductCount();
         </div>
     </div>
 
+    <?php
+        $recentProducts = getRecentPendingProducts();
+    ?>
+
+    <h3 style="margin-top:40px;">Recent Pending Products</h3>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Seller</th>
+        </tr>
+
+        <?php while ($row = mysqli_fetch_assoc($recentProducts)): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($row['name']); ?></td>
+                <td><?php echo htmlspecialchars($row['seller_name']); ?></td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+
 </div>
 
 <?php include 'views/common/footer.php'; ?>
