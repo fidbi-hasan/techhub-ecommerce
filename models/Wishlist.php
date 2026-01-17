@@ -33,3 +33,16 @@ function getWishlistItems($user_id) {
 
     return mysqli_stmt_get_result($stmt);
 }
+
+function getWishlistCount($user_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT COUNT(*) AS total FROM wishlist WHERE user_id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['total'];
+}

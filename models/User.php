@@ -33,3 +33,8 @@ function updatePasswordByEmail($email, $newPassword) {
     return mysqli_stmt_execute($stmt);
 }
 
+function getTotalUserCount() {
+    global $conn;
+    $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users");
+    return mysqli_fetch_assoc($result)['total'];
+}

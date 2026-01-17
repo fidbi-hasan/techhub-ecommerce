@@ -2,6 +2,13 @@
 require_once 'controllers/auth_guard.php';
 requireRole('admin');
 include 'views/common/header.php';
+
+require_once 'models/User.php';
+require_once 'models/Product.php';
+
+$userCount = getTotalUserCount();
+$pendingCount = getPendingProductCount();
+
 ?>
 <link rel="stylesheet" href="assets/css/dashboard.css">
 
@@ -15,17 +22,20 @@ include 'views/common/header.php';
     <div class="dashboard-grid">
         <div class="stat-card">
             <h3>Pending Products</h3>
-            <div class="value">Review</div>
+            <div class="value"><?php echo $pendingCount; ?></div>
         </div>
+
         <div class="stat-card">
             <h3>Total Users</h3>
-            <div class="value">View</div>
+            <div class="value"><?php echo $userCount; ?></div>
         </div>
+
         <div class="stat-card">
             <h3>System Status</h3>
             <div class="value">OK</div>
         </div>
     </div>
+
 
     <div class="action-grid">
         <div class="action-card">

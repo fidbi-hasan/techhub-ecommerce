@@ -2,6 +2,19 @@
 require_once 'controllers/auth_guard.php';
 requireRole('customer');
 include 'views/common/header.php';
+
+require_once 'models/Order.php';
+require_once 'models/Wishlist.php';
+
+$orderCount = getCustomerOrderCount($_SESSION['user_id']);
+$cartCount = 0;
+if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $cartCount += $item['quantity'];
+    }
+}
+$wishlistCount = getWishlistCount($_SESSION['user_id']);
+
 ?>
 <link rel="stylesheet" href="assets/css/dashboard.css">
 
@@ -16,17 +29,20 @@ include 'views/common/header.php';
     <div class="dashboard-grid">
         <div class="stat-card">
             <h3>Total Orders</h3>
-            <div class="value">View</div>
+            <div class="value"><?php echo $orderCount; ?></div>
         </div>
+
         <div class="stat-card">
             <h3>Cart Items</h3>
-            <div class="value">Open</div>
+            <div class="value"><?php echo $cartCount; ?></div>
         </div>
+
         <div class="stat-card">
-            <h3>Wishlist</h3>
-            <div class="value">Saved</div>
+            <h3>Wishlist Items</h3>
+            <div class="value"><?php echo $wishlistCount; ?></div>
         </div>
     </div>
+
 
     <!-- ACTIONS -->
     <div class="action-grid">

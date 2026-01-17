@@ -102,3 +102,26 @@ function getProductsBySeller($seller_id) {
     return mysqli_stmt_get_result($stmt);
 }
 
+function getSellerProductCount($seller_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT COUNT(*) AS total FROM products WHERE seller_id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $seller_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['total'];
+}
+
+function getPendingProductCount() {
+    global $conn;
+    $result = mysqli_query(
+        $conn,
+        "SELECT COUNT(*) AS total FROM products WHERE status = 'pending'"
+    );
+    return mysqli_fetch_assoc($result)['total'];
+}
+
+

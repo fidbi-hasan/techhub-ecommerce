@@ -107,4 +107,30 @@ function getCustomerOrderItems($customer_id) {
     return mysqli_stmt_get_result($stmt);
 }
 
+function getCustomerOrderCount($customer_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT COUNT(*) AS total FROM orders WHERE customer_id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $customer_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['total'];
+}
+
+function getSellerOrderItemCount($seller_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT COUNT(*) AS total FROM order_items WHERE seller_id = ?"
+    );
+    mysqli_stmt_bind_param($stmt, "i", $seller_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['total'];
+}
+
 

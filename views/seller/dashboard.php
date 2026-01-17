@@ -2,6 +2,13 @@
 require_once 'controllers/auth_guard.php';
 requireRole('seller');
 include 'views/common/header.php';
+
+require_once 'models/Product.php';
+require_once 'models/Order.php';
+
+$productCount = getSellerProductCount($_SESSION['user_id']);
+$orderCount = getSellerOrderItemCount($_SESSION['user_id']);
+
 ?>
 <link rel="stylesheet" href="assets/css/dashboard.css">
 
@@ -15,17 +22,20 @@ include 'views/common/header.php';
     <div class="dashboard-grid">
         <div class="stat-card">
             <h3>My Products</h3>
-            <div class="value">Manage</div>
+            <div class="value"><?php echo $productCount; ?></div>
         </div>
+
         <div class="stat-card">
             <h3>Orders</h3>
-            <div class="value">Track</div>
+            <div class="value"><?php echo $orderCount; ?></div>
         </div>
+
         <div class="stat-card">
             <h3>Sales Status</h3>
             <div class="value">Active</div>
         </div>
     </div>
+
 
     <div class="action-grid">
         <div class="action-card">
