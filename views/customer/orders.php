@@ -23,6 +23,7 @@ $orders = getCustomerOrderItems($_SESSION['user_id']);
                 <th>Price</th>
                 <th>Status</th>
                 <th>Date</th>
+                <th>Order Details</th>
             </tr>
 
             <?php while ($row = mysqli_fetch_assoc($orders)): ?>
