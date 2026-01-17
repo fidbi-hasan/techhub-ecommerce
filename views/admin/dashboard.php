@@ -3,28 +3,37 @@ require_once 'controllers/auth_guard.php';
 requireRole('admin');
 include 'views/common/header.php';
 ?>
+<link rel="stylesheet" href="assets/css/dashboard.css">
 
 <div class="container">
-    <h2>Welcome, Admin</h2>
-    <p>System Administration</p>
-    <hr>
 
-    <div class="dashboard">
-        <div class="card">
-            <h3>Approve Products</h3>
-            <a href="index.php?action=admin_products">Pending Products</a>
+    <div class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <p>System Overview & Control</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <h3>Pending Products</h3>
+            <div class="value">Review</div>
         </div>
-
-        <div class="card">
-            <h3>Manage Users</h3>
-            <p>View system users</p>
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <div class="value">View</div>
         </div>
-
-        <div class="card">
+        <div class="stat-card">
             <h3>System Status</h3>
-            <p>Operational</p>
+            <div class="value">OK</div>
         </div>
     </div>
+
+    <div class="action-grid">
+        <div class="action-card">
+            <h3>Product Moderation</h3>
+            <a href="index.php?action=admin_products">Approve Products</a>
+        </div>
+    </div>
+
 </div>
 
 <?php include 'views/common/footer.php'; ?>
