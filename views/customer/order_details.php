@@ -35,7 +35,9 @@ $items = getOrderItemsByOrderId($order_id);
                 <td>$<?php echo $row['price']; ?></td>
 
                 <td>
-                    <?php echo ucfirst($row['status']); ?>
+                    <span class="badge badge-<?php echo $row['status']; ?>">
+                        <?php echo $row['status']; ?>
+                    </span>
                 </td>
             </tr>
         <?php endwhile; ?>

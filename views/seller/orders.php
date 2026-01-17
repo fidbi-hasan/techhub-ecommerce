@@ -40,7 +40,11 @@ $orders = getSellerOrders($_SESSION['user_id']);
 
                     <td><?php echo $row['quantity']; ?></td>
 
-                    <td><?php echo ucfirst($row['status']); ?></td>
+                    <td>
+                        <span class="badge badge-<?php echo $row['status']; ?>">
+                            <?php echo $row['status']; ?>
+                        </span>
+                    </td>
 
                     <td><?php echo $row['created_at']; ?></td>
 
