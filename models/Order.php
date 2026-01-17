@@ -224,3 +224,26 @@ function updateOrderStatusFromItems($order_id) {
     mysqli_stmt_execute($stmt);
 }
 
+function getOrderItemsByOrderId($order_id) {
+    global $conn;
+
+    $stmt = mysqli_prepare(
+        $conn,
+        "SELECT 
+            p.name,
+            p.image,
+            oi.quantity,
+            oi.price,
+            oi.status
+         FROM order_items oi
+         JOIN products p ON oi.product_id = p.id
+         WHERE oi.order_id = ?"
+    );
+
+    mysqli_stmt_bind_param($stmt, "i", $order_id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt);
+}
+
+

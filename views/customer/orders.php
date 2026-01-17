@@ -39,6 +39,11 @@ $orders = getCustomerOrderItems($_SESSION['user_id']);
                     <td>$<?php echo $row['price']; ?></td>
                     <td><?php echo ucfirst($row['status']); ?></td>
                     <td><?php echo $row['created_at']; ?></td>
+                    <td>
+                        <a href="index.php?action=order_details&id=<?php echo $row['order_id']; ?>">
+                            View Details
+                        </a>
+                    </td>
                 </tr>
             <?php endwhile; ?>
 

@@ -118,6 +118,10 @@ switch ($action) {
         handleProfileUpdate();
         break;
 
+    case 'order_details':
+        require 'views/customer/order_details.php';
+        break;
+
     default:
         require 'views/errors/404.php';
 }
