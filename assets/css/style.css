@@ -212,3 +212,20 @@ table th, table td {
     font-size: 13px;
 }
 
+/* Profile Images */
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.profile-img-sm {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    vertical-align: middle;
+}

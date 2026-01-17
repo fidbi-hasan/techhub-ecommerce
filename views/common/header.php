@@ -34,7 +34,7 @@
                 <a href="<?php echo $dashboardLink; ?>" class="nav-user">
                     <?php if (!empty($_SESSION['profile_image'])): ?>
                         <img src="uploads/profiles/<?php echo $_SESSION['profile_image']; ?>"
-                            style="width:28px;height:28px;border-radius:50%;vertical-align:middle;">
+                            class="profile-img-sm">
                     <?php endif; ?>
                     <?php echo htmlspecialchars($_SESSION['name']); ?>
                 </a>

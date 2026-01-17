@@ -17,7 +17,7 @@ $pendingCount = getPendingProductCount();
     <div class="dashboard-header">
     <?php if (!empty($_SESSION['profile_image'])): ?>
         <img src="uploads/profiles/<?php echo $_SESSION['profile_image']; ?>"
-            width="80" style="border-radius:50%;margin-bottom:10px;">
+     class="profile-img">
     <?php endif; ?>
 
         <h2>Admin Dashboard</h2>

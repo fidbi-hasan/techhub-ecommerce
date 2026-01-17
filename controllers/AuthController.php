@@ -46,6 +46,7 @@ function handleLogin() {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role']    = $user['role'];
         $_SESSION['name']    = $user['name'];
+        $_SESSION['profile_image'] = $user['profile_image'];
 
         if ($user['role'] === 'admin') {
             header("Location: index.php?action=admin_dashboard");

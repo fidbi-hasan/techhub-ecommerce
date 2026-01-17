@@ -13,7 +13,7 @@ $user = getUserById($_SESSION['user_id']);
 
         <?php if ($user['profile_image']): ?>
             <img src="uploads/profiles/<?php echo $user['profile_image']; ?>"
-                 width="120" style="margin-bottom:15px;border-radius:50%;">
+            class="profile-img">
         <?php endif; ?>
 
         <label>Name</label>

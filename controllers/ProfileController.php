@@ -28,6 +28,10 @@ function handleProfileUpdate() {
         // update session name for navbar/dashboard
         $_SESSION['name'] = $name;
 
+        if ($imageName) {
+          $_SESSION['profile_image'] = $imageName;
+        }      
+
         header("Location: index.php?action=profile");
         exit;
     }
